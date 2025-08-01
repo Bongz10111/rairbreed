@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RAIRBREED | Built Different</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero">
+    <h1 class="brand">RAIRBREED</h1>
+    <p class="slogan">Built different</p>
+  </div>
+
+  <section class="products">
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/front.jpg" class="back" alt="Back view">
+        <img src="assets/back.jpg" class="front" alt="Front view">
+      </div>
+      <h2>Built Different Tee</h2>
+      <button onclick="openOrder()">Order Now</button>
+    </div>
+  </section>
+
+  <div class="order-popup" id="orderPopup">
+    <div class="popup-content">
+      <h2>Order: Built Different Tee</h2>
+      <label>Size:</label>
+      <select id="sizeSelect">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      </select>
+
+      <label>Color:</label>
+      <select id="colorSelect">
+        <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+      </select>
+
+      <button onclick="sendWhatsAppOrder()">Send via WhatsApp</button>
+      <button onclick="closeOrder()">Cancel</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 RAIRBREED. All rights reserved.</p>
+    <a href="https://wa.me/27672695851" target="_blank" class="whatsapp">Chat on WhatsApp</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

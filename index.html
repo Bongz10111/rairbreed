@@ -5,48 +5,432 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RAIRBREED | Built Different</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+
+  <style>
+    .price {
+      font-family: 'Rottesla', cursive, sans-serif;
+      font-size: 1.2rem;
+      color: #ff4d94;
+      margin: 5px 0 12px 0;
+      user-select: none;
+      text-shadow: 0 0 6px #ff1f1f;
+    }
+    /* Cart styles */
+    #cartIcon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      background: #ff003c;
+      padding: 10px;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 10px #ff003c;
+    }
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 20%;
+      right: 10%;
+      background: rgba(0, 0, 0, 0.95);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      width: 300px;
+    }
+    .cart-modal ul {
+      list-style: none;
+      padding: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    .cart-modal ul li {
+      border-bottom: 1px solid #444;
+      padding: 6px 0;
+    }
+    .order-popup.show {
+      display: block !important;
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <h1 class="brand">RAIRBREED</h1>
-    <p class="slogan">Built different</p>
-  </div>
+  <header>
+    <h1 class="brand flicker">RAIRBREED APPAREL</h1>
+    <p class="slogan graffiti">I AM A RAIRBREED</p>
+  </header>
 
-  <section class="products">
+  <section class="products" data-aos="fade-up">
+    <!-- Example product card: I updated the selects with class for JS, and the buttons -->
+
     <div class="product-card">
       <div class="image-container">
-        <img src="assets/front.jpg" class="back" alt="Back view">
-        <img src="assets/back.jpg" class="front" alt="Front view">
+        <img src="assets/front.jpg" class="back" alt="Back view" />
+        <img src="assets/back.jpg" class="front" alt="Front view" />
       </div>
       <h2>Built Different Tee</h2>
-      <button onclick="openOrder()">Order Now</button>
+      <p class="price">R450</p>
+      <button onclick="openOrder(this, 'Built Different Tee')">Order Now</button>
+      <!-- Popup -->
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: Built Different Tee</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <!-- Splashes -->
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
     </div>
+
+    <!-- Repeat similar changes for all other product cards -->
+    <!-- Just changed the selects to have classes: size-select, color-select, quantity-input, delivery-select -->
+    <!-- And replaced "Send via WhatsApp" with "Add to Cart" calling addCurrentProductToCart(this) -->
+    <!-- I'll do that below for all -->
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/hoodiefront.jpg" class="back" alt="Back view" />
+        <img src="assets/flyhoodie.jpg" class="front" alt="Front view" />
+      </div>
+      <h2>FLY Hoodie</h2>
+      <p class="price">R800</p>
+      <button onclick="openOrder(this, 'FLY Hoodie')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: FLY Hoodie</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/thatsweird.jpg" class="back" alt="Back view" />
+        <img src="assets/white.jpg" class="front" alt="Front view" />
+      </div>
+      <h2>That's Weird Sweatshirt</h2>
+      <p class="price">R700</p>
+      <button onclick="openOrder(this, 'That\'s Weird Sweatshirt')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: That's Weird Sweatshirt</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/sweatpantsbck.jpg" class="back" alt="Back view" />
+        <img src="assets/sweatpants.jpg" class="front" alt="Front view" />
+      </div>
+      <h2>raiRBreed Sweatpants</h2>
+      <p class="price">R690</p>
+      <button onclick="openOrder(this, 'raiRBreed Sweatpants')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: raiRBreed Sweatpants</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/GOATBCK.jpg" class="back" alt="Back view" />
+        <img src="assets/white.jpg" class="front" alt="Front view" />
+      </div>
+      <h2>G.O.A.T Tee</h2>
+      <p class="price">R450</p>
+      <button onclick="openOrder(this, 'G.O.A.T Tee')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: G.O.A.T Tee</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/big.jpg" class="back" alt="Back view" />
+        <img src="assets/white.jpg" class="front" alt="Front view" />
+      </div>
+      <h2>BIG Hoodie</h2>
+      <p class="price">R800</p>
+      <button onclick="openOrder(this, 'BIG Hoodie')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: BIG Hoodie</h2>
+          <label>Size:</label>
+          <select class="size-select">
+            <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+          <label>Color:</label>
+          <select class="color-select">
+            <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+          </select>
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/cap.jpg" class="back" alt="Front View" />
+      </div>
+      <h2>Cap</h2>
+      <p class="price">R350</p>
+      <button onclick="openOrder(this, 'Cap')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: Cap</h2>
+          
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/truckercap.jpg" class="back" alt="Front View" />
+      </div>
+      <h2>Trucker Cap</h2>
+      <p class="price">R350</p>
+      <button onclick="openOrder(this, 'Trucker Cap')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: Trucker Cap</h2>
+          
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
+    <div class="product-card">
+      <div class="image-container">
+        <img src="assets/buckethat.jpg" class="back" alt="Front View" />
+      </div>
+      <h2>Bucket Hat</h2>
+      <p class="price">R350</p>
+      <button onclick="openOrder(this, 'buckethat')">Order Now</button>
+      <div class="order-popup" style="display:none;">
+        <div class="popup-content">
+          <h2>Order: Bucket Hat</h2>
+         
+          <label>Quantity:</label>
+          <input type="number" class="quantity-input" value="1" min="1" />
+          <label>Delivery:</label>
+          <select class="delivery-select">
+            <option value="0">No Delivery Required(Local)</option>
+            <option value="100">Paxi(R100)</option>
+            <option value="105">Courier guy(R105)</option>
+            <option value="100">PostNet(R100)</option>
+          </select>
+          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+          <button onclick="closeOrder(this)">Cancel</button>
+        </div>
+      </div>
+      <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
+      <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
+    </div>
+
   </section>
 
-  <div class="order-popup" id="orderPopup">
-    <div class="popup-content">
-      <h2>Order: Built Different Tee</h2>
-      <label>Size:</label>
-      <select id="sizeSelect">
-        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
-      </select>
+  <footer>
+  <p>&copy; 2025 RAIRBREED. All rights reserved.</p>
+  <div class="social-links">
+    <a href="https://wa.me/27672695851" target="_blank" class="whatsapp" aria-label="Chat on WhatsApp" title="WhatsApp">
+      <!-- WhatsApp SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#25D366" viewBox="0 0 24 24"><path d="M20.52 3.48a11.943 11.943 0 00-16.9 16.9l-2.4 7.38 7.38-2.4a11.943 11.943 0 0011.9-21.88zm-8.4 16.32c-2.46 0-4.74-1.18-6.16-3.2l-1.52 1.52v-4.48l-1.6-1.6a9.954 9.954 0 0112.7-2.7c2.7 1.44 4.2 4.38 3.84 7.44-.12.9-.72 1.8-1.32 2.52l-2.04-1.2c-.48-.3-1.2-.18-1.56.3l-.84 1.44c-.12.18-.36.3-.6.3zm3.6-5.4l-1.08-1.44c-.12-.18-.36-.3-.6-.3s-.48.12-.6.3l-.72 1.32-1.8-.84c-.18-.12-.42-.18-.66-.18-.48 0-.9.3-1.02.78-.18.66.3 1.38.84 1.86l2.16 2.04c.48.48 1.2.78 1.92.78.6 0 1.2-.3 1.56-.78l.72-1.32c.12-.18.18-.42.18-.66 0-.54-.3-1.08-.9-1.26z"/></svg>
+    </a>
 
-      <label>Color:</label>
-      <select id="colorSelect">
-        <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
-      </select>
+    <a href="https://www.instagram.com/yourinstagram" target="_blank" aria-label="Instagram" title="Instagram" class="instagram">
+      <!-- Instagram SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#E1306C" viewBox="0 0 24 24"><path d="M7.75 2h8.5a5.75 5.75 0 015.75 5.75v8.5a5.75 5.75 0 01-5.75 5.75h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zm8.88 3.12a1.12 1.12 0 110 2.25 1.12 1.12 0 010-2.25zm-4.13 1.88a4.88 4.88 0 110 9.75 4.88 4.88 0 010-9.75zm0 1.5a3.38 3.38 0 100 6.75 3.38 3.38 0 000-6.75z"/></svg>
+    </a>
 
-      <button onclick="sendWhatsAppOrder()">Send via WhatsApp</button>
-      <button onclick="closeOrder()">Cancel</button>
-    </div>
+    <a href="https://www.facebook.com/yourfacebook" target="_blank" aria-label="Facebook" title="Facebook" class="facebook">
+      <!-- Facebook SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1877F2" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.87v-7h-3v-3h3v-2.3c0-3 1.79-4.7 4.52-4.7 1.31 0 2.68.23 2.68.23v3h-1.53c-1.5 0-1.96.94-1.96 1.9V12h3.33l-.53 3h-2.8v7A10 10 0 0022 12z"/></svg>
+    </a>
+  </div>
+</footer>
+
+
+  <!-- Cart Icon -->
+  <div id="cartIcon" onclick="toggleCart()" title="View Cart 🛒">
+    🛒 <span id="cartCount">0</span>
   </div>
 
-  <footer>
-    <p>&copy; 2025 RAIRBREED. All rights reserved.</p>
-    <a href="https://wa.me/27672695851" target="_blank" class="whatsapp">Chat on WhatsApp</a>
-  </footer>
+  <!-- Cart Modal -->
+  <div id="cartModal" class="cart-modal">
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+    <p id="cartTotal">Total: R0</p>
+    <button onclick="sendCart()">Send Cart via WhatsApp</button>
+    <button onclick="toggleCart()">Close</button>
+  </div>
 
   <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <div id="notification" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ff003c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #ff003c;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 10000;
+">Added to cart!</div>
+
 </body>
 </html>

@@ -291,85 +291,128 @@
     </div>
 
     <div class="product-card">
-      <div class="image-container">
-        <img src="assets/cap.jpg" class="back" alt="Front View" />
-      </div>
-      <h2>Cap</h2>
-      <p class="price">R350</p>
-      <button onclick="openOrder(this, 'Cap')">Order Now</button>
-      <div class="order-popup" style="display:none;">
-        <div class="popup-content">
-          <h2>Order: Cap</h2>
-          
-          <label>Quantity:</label>
-          <input type="number" class="quantity-input" value="1" min="1" />
-          <label>Delivery:</label>
-          <select class="delivery-select">
-            <option value="0">No Delivery Required(Local)</option>
-            <option value="100">Paxi(R100)</option>
-            <option value="105">Courier guy(R105)</option>
-            <option value="100">PostNet(R100)</option>
-          </select>
-          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
-          <button onclick="closeOrder(this)">Cancel</button>
-        </div>
+  <div class="image-container">
+    <img src="assets/cap.jpg" class="back" alt="Front View" />
+  </div>
+  <h2>Cap</h2>
+  <p class="price">R350</p>
+  <button onclick="openOrder(this, 'Cap')">Order Now</button>
+  <div class="order-popup">
+    <div class="popup-content">
+      <h2>Order: Cap</h2>
+
+      <label>Size:</label>
+      <select class="size-select">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      </select>
+
+      <label>Color:</label>
+      <select class="color-select">
+        <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+      </select>
+
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" value="1" min="1" />
+
+      <label>Delivery:</label>
+      <select class="delivery-select">
+        <option value="0">No Delivery Required(Local)</option>
+        <option value="100">Paxi(R100)</option>
+        <option value="105">Courier guy(R105)</option>
+        <option value="100">PostNet(R100)</option>
+      </select>
+
+      <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+      <button onclick="closeOrder(this)">Cancel</button>
+    </div>
+  </div>
+</div>
+
       </div>
       <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
       <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
     </div>
 
     <div class="product-card">
-      <div class="image-container">
-        <img src="assets/truckercap.jpg" class="back" alt="Front View" />
-      </div>
-      <h2>Trucker Cap</h2>
-      <p class="price">R350</p>
-      <button onclick="openOrder(this, 'Trucker Cap')">Order Now</button>
-      <div class="order-popup" style="display:none;">
-        <div class="popup-content">
-          <h2>Order: Trucker Cap</h2>
-          
-          <label>Quantity:</label>
-          <input type="number" class="quantity-input" value="1" min="1" />
-          <label>Delivery:</label>
-          <select class="delivery-select">
-            <option value="0">No Delivery Required(Local)</option>
-            <option value="100">Paxi(R100)</option>
-            <option value="105">Courier guy(R105)</option>
-            <option value="100">PostNet(R100)</option>
-          </select>
-          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
-          <button onclick="closeOrder(this)">Cancel</button>
-        </div>
-      </div>
+  <div class="image-container">
+    <img src="assets/truckercap.jpg" class="back" alt="Front View" />
+  </div>
+  <h2>Trucker Cap</h2>
+  <p class="price">R350</p>
+  <button onclick="openOrder(this, 'Cap')">Order Now</button>
+  <div class="order-popup">
+    <div class="popup-content">
+      <h2>Order:Trucker Cap</h2>
+
+      <label>Size:</label>
+      <select class="size-select">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      </select>
+
+      <label>Color:</label>
+      <select class="color-select">
+        <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+      </select>
+
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" value="1" min="1" />
+
+      <label>Delivery:</label>
+      <select class="delivery-select">
+        <option value="0">No Delivery Required(Local)</option>
+        <option value="100">Paxi(R100)</option>
+        <option value="105">Courier guy(R105)</option>
+        <option value="100">PostNet(R100)</option>
+      </select>
+
+      <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+      <button onclick="closeOrder(this)">Cancel</button>
+    </div>
+  </div>
+</div>
+
       <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
       <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
     </div>
 
     <div class="product-card">
-      <div class="image-container">
-        <img src="assets/buckethat.jpg" class="back" alt="Front View" />
-      </div>
-      <h2>Bucket Hat</h2>
-      <p class="price">R350</p>
-      <button onclick="openOrder(this, 'buckethat')">Order Now</button>
-      <div class="order-popup" style="display:none;">
-        <div class="popup-content">
-          <h2>Order: Bucket Hat</h2>
-         
-          <label>Quantity:</label>
-          <input type="number" class="quantity-input" value="1" min="1" />
-          <label>Delivery:</label>
-          <select class="delivery-select">
-            <option value="0">No Delivery Required(Local)</option>
-            <option value="100">Paxi(R100)</option>
-            <option value="105">Courier guy(R105)</option>
-            <option value="100">PostNet(R100)</option>
-          </select>
-          <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
-          <button onclick="closeOrder(this)">Cancel</button>
-        </div>
-      </div>
+  <div class="image-container">
+    <img src="assets/buckethat.jpg" class="back" alt="Front View" />
+  </div>
+  <h2>Buckethat</h2>
+  <p class="price">R350</p>
+  <button onclick="openOrder(this, 'Cap')">Order Now</button>
+  <div class="order-popup">
+    <div class="popup-content">
+      <h2>Order: Cap</h2>
+
+      <label>Size:</label>
+      <select class="size-select">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      </select>
+
+      <label>Color:</label>
+      <select class="color-select">
+        <option>Black</option><option>White</option><option>Grey</option><option>Green</option><option>Red</option>
+      </select>
+
+      <label>Quantity:</label>
+      <input type="number" class="quantity-input" value="1" min="1" />
+
+      <label>Delivery:</label>
+      <select class="delivery-select">
+        <option value="0">No Delivery Required(Local)</option>
+        <option value="100">Paxi(R100)</option>
+        <option value="105">Courier guy(R105)</option>
+        <option value="100">PostNet(R100)</option>
+      </select>
+
+      <button onclick="addCurrentProductToCart(this)">Add to Cart</button>
+      <button onclick="closeOrder(this)">Cancel</button>
+    </div>
+  </div>
+</div>
+
       <svg class="paint-splash product-top-right" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20"/></svg>
       <svg class="paint-splash product-bottom-left" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="25" ry="10"/></svg>
     </div>

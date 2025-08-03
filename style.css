@@ -79,7 +79,6 @@
 }
 
 
-
 .product-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.1);
@@ -402,3 +401,27 @@ footer .social-links svg {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Responsive tweaks for mobile and tablets */
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    padding: 40px 15px;
+  }
+
+  .product-card {
+    width: 90%; /* Slightly wider on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    padding: 30px 10px;
+  }
+
+  .product-card {
+    width: 100%; /* Full width on small screens */
+  }
+}
+

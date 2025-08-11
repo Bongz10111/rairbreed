@@ -446,13 +446,43 @@
   </div>
 
   <!-- Cart Modal -->
-  <div id="cartModal" class="cart-modal">
-    <h3>Your Cart</h3>
-    <ul id="cartItems"></ul>
-    <p id="cartTotal">Total: R0</p>
-    <button onclick="sendCart()">Send Cart via WhatsApp</button>
-    <button onclick="toggleCart()">Close</button>
-  </div>
+<div id="cartModal" class="cart-modal">
+  <h3>Your Cart</h3>
+
+  <!-- Name & Surname Inputs -->
+  <input type="text" id="clientName" placeholder="Name" class="cart-input">
+  <input type="text" id="clientSurname" placeholder="Surname" class="cart-input">
+
+  <ul id="cartItems"></ul>
+  <p id="cartTotal">Total: R0</p>
+  <button onclick="sendCart()">Send Cart via WhatsApp</button>
+  <button onclick="toggleCart()">Close</button>
+</div>
+
+<style>
+  /* Match RAIRBREED style for inputs */
+  .cart-input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .cart-input::placeholder {
+    color: #ccc;
+  }
+
+  .cart-input:focus {
+    border-color: white;
+  }
+</style>
+
+
 
   <script src="script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

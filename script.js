@@ -137,13 +137,24 @@ function sendCart() {
     return;
   }
 
+  const name = document.getElementById('clientName')?.value.trim();
+  const surname = document.getElementById('clientSurname')?.value.trim();
+
+  if (!name || !surname) {
+    alert("Please enter your name and surname before sending the order.");
+    return;
+  }
+
   const orderNumber = Math.floor(100000 + Math.random() * 900000);
   const totalPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
-  let message = `*RAIRBREED Order #${orderNumber}:*\n\n`;
+  let message = `*RAIRBREED Order #${orderNumber}*\n`;
+  message += `From: ${name} ${surname}\n\n`;
+
   cart.forEach(item => {
     message += `${item.quantity} x ${item.name} (Size: ${item.size}, Color: ${item.color}, Delivery: ${item.delivery}) - R${item.totalPrice.toFixed(2)}\n`;
   });
+
   message += `\n*Total: R${totalPrice.toFixed(2)}*\n\n`;
   message += "Please confirm delivery address and you'll receive payment details.";
 
@@ -152,6 +163,8 @@ function sendCart() {
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
   window.open(whatsappURL, '_blank');
+}
+
 
   // Show confirmation popup
   setTimeout(() => {
@@ -168,5 +181,4 @@ function sendCart() {
       confirmation.remove();
     }, 8000);
   }, 1000);
-}
 
